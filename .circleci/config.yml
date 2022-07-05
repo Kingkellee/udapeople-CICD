@@ -112,9 +112,9 @@ jobs:
       - run:
           name: Install tar/gzip utility
           command: |
-            apt-get update
-            apt-get -y install tar
-            apt-get -y install gzip
+            sudo apt-get update
+            sudo apt-get -y install tar
+            sudo apt-get -y install gzip
       - run:
           name: Ensure backend infrastructure exists
           command: |
