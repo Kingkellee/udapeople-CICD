@@ -194,7 +194,7 @@ jobs:
 
   run-migrations:
     docker:
-      - image: circleci/node:13.18.0
+      - image: circleci/node:latest
     steps:
       - checkout
       - run:
