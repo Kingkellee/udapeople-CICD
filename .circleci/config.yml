@@ -183,7 +183,7 @@ jobs:
       - run:
           name: install required dependencies
           command: |
-            apk add --update ansible
+            apk add --update ansible curl aws-cli
       - run:
           name: Configure server
           command: |
