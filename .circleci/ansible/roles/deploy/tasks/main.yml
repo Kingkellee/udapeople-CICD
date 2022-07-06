@@ -1,0 +1,37 @@
+- name: 'upgrade packages'
+  become: yes
+  apt:
+    upgrade: 'yes'
+
+- name: 'update apt packages'
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: 'install dependencies'
+  become: yes
+  apt:
+    name: ['nodejs', 'npm']
+    state: latest
+    update_cache: yes
+
+- name: install pm2
+  become: yes
+  npm:
+    name: pm2
+    global: yes
+    state: latest
+    production: yes
+
+- name: 'Copy backend tar.gz file and unzip it'
+  become: yes
+  unarchive:
+    src: files/artifact.tar.gz
+    dest: .
+
+- name: start app
+  become: yes
+  shell: |
+    npm run migrations
+    pm2 delete all
+    export $(grep TYPEORM_HOST /home/ubuntu/.env) && pm2 start npm -- start
