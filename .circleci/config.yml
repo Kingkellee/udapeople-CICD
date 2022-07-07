@@ -226,8 +226,9 @@ jobs:
           name: Install dependencies
           command: |
             apk add --update --no-cache tar gzip nodejs npm ansible curl aws-cli
-            npm audit fix --audit-level=critical --force
-            npm audit --audit-level=critical
+            npm install
+            npm update
+            npm audit fix
       - run:
           name: Get backend url
           command: |
