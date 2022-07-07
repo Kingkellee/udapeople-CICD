@@ -264,13 +264,14 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            apk add --update tar gzip nodejs npm ansible curl aws-cli
+            apk add --update aws-cli tar gzip ansible nodejs npm
       - run:
           name: Compress backend
           command: |
             cd backend
             npm run build
             cd ..
+            # npm i tsc
             tar -C backend -czvf artifact.tar.gz .
             cp ./artifact.tar.gz .circleci/ansible/roles/deploy/files/
       - run:
