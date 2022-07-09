@@ -1,6 +1,7 @@
 # URLS
 
 URL01 (Git repo): `https://github.com/Kingkellee/udapeople-CICD`
+URL02 (S3 bucket): `http://udapeople-e8442e8.s3-website-us-east-1.amazonaws.com`
 
 # SCREENSHOT
 
