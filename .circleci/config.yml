@@ -272,9 +272,7 @@ jobs:
           command: |
             cd ..
             tar -C backend -czvf artifact.tar.gz .
-            mkdir -p ~/project/.circleci/ansible/roles/deploy/files/
-            mv artifact.tar.gz .circleci/ansible/roles/deploy/files/artifact.tar.gz
-            cp ~/project/backend/.env .circleci/ansible/roles/deploy/files/backend.env
+            cp artifact.tar.gz .circleci/ansible/roles/deploy/files/
       - run:
           name: Ansible Playbook
           command: |
