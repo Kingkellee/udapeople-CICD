@@ -8,12 +8,6 @@
   apt:
     update_cache: yes
 
-- name: 'Unarchive backend files'
-  become: yes
-  unarchive:
-    src: files/artifact.tar.gz
-    dest: .
-
 - name: 'install dependencies'
   become: yes
   apt:
@@ -29,9 +23,15 @@
     state: latest
     production: yes
 
+- name: 'Unarchive backend files'
+  become: yes
+  unarchive:
+    src: files/artifact.tar.gz
+    dest: /home/ubuntu
+
 - name: start app
   become: yes
   shell: |
-    npm run migrations
+    cd /home/ubuntu
     pm2 stop default
     pm2 start npm -- start
