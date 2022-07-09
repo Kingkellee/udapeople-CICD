@@ -167,7 +167,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - project/.circleci/ansible/inventory.txt
+            - .circleci/ansible/inventory.txt
 
       - destroy-environment
 
@@ -271,7 +271,7 @@ jobs:
           name: Zip Directory
           command: |
             tar -C backend -czvf artifact.tar.gz . 
-            mkdir -p ~/project/.circleci/ansible/roles/deploy/files/
+            mkdir -p .circleci/ansible/roles/deploy/files/
             mv artifact.tar.gz .circleci/ansible/roles/deploy/files/artifact.tar.gz
       - run:
           name: Deploy Backend
@@ -303,7 +303,7 @@ workflows:
           requires: [deploy-infrastructure]
       - run-migrations:
           requires: [configure-infrastructure]
-      # - deploy-frontend:
-      #     requires: [run-migrations]
+      - deploy-frontend:
+          requires: [run-migrations]
       - deploy-backend:
           requires: [run-migrations]
