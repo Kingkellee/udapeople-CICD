@@ -227,7 +227,7 @@ jobs:
             apk add --update npm
       - run:
           name: Get Backend Url
-          commands: |
+          command: |
             export BACKEND_IP=$(aws ec2 describe-instances \
             --query 'Reservations[*].Instances[*].PublicIpAddress' \
             --filters Name=tag:aws:cloudformation:stack-name,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7} \
