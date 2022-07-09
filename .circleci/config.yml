@@ -265,7 +265,7 @@ jobs:
           name: Deploy Backend
           command: |
             cd backend
-            npm i
+            npm i --legacy-peer-deps
             npm run build
       - run:
           name: Zip Directory
