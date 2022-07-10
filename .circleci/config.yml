@@ -28,7 +28,7 @@ commands:
           name: Revert migrations
           when: on_fail
           command: |
-            SUCCESS=$(curl --insecure https://kvdb.io/${KVDB_BUCKET_ID}/migration_<< parameters.Workflow_ID >>)
+            SUCCESS=$(curl --insecure https://kvdb.io/Y6wdqe23fyTTdGMZN1oYbo/migration_<< parameters.Workflow_ID >>)
             echo $SUCCESS
             if (( $SUCCESS == 1 ));
             then
@@ -231,7 +231,7 @@ jobs:
           command: |
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-                curl https://kvdb.io/${KVDB_BUCKET_ID}/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+              curl https://kvdb.io/Y6wdqe23fyTTdGMZN1oYbo/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '1'
             fi
       - destroy-environment
       - revert-migrations
@@ -331,11 +331,10 @@ jobs:
               echo "FAILED, Something went Wrong!!"
               return 1
             fi
-
       - run:
           name: Frontend Smoke Test
           command: |
-            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-west-2.amazonaws.com/#/employees"            
+            URL="http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-1.amazonaws.com/#/employees"            
             echo ${URL}
             if curl -s ${URL} | grep "Welcome"
             then
@@ -346,8 +345,8 @@ jobs:
               echo "FAILED, Something went Wrong!!"
               return 1
             fi
-      - destroy-environment
-      - revert-migrations
+      # - destroy-environment
+      # - revert-migrations
 workflows:
   default:
     jobs:
