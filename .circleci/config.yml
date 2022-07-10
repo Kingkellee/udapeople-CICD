@@ -34,7 +34,7 @@ commands:
             then
               cd ~/project/backend
               npm install
-              npm run migration:revert
+              npm run migrations:revert
             fi
 
 jobs:
@@ -345,8 +345,8 @@ jobs:
               echo "FAILED, Something went Wrong!!"
               return 1
             fi
-      # - destroy-environment
-      # - revert-migrations
+      - destroy-environment
+      - revert-migrations
 workflows:
   default:
     jobs:
