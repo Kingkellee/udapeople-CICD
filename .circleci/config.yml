@@ -322,10 +322,10 @@ jobs:
             if curl "${API_URL}/api/status" | grep "ok"
             then
               echo "SUCCESS, Backend Deployed!!"
-              exit 0
+              return 0
             else
               echo "FAILED, Something went Wrong!!"
-              exit 1
+              return 1
             fi
       - run:
           name: Frontend Smoke Test

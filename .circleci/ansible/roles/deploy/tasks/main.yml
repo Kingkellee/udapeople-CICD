@@ -27,11 +27,11 @@
   become: yes
   unarchive:
     src: files/artifact.tar.gz
-    dest: /home/ubuntu
+    dest: .
 
 - name: start app
   become: yes
   shell: |
-    cd /home/ubuntu
-    pm2 stop default
-    pm2 start npm -- start
+    npm run migrations
+    pm2 delete all
+    export $(grep TYPEORM_HOST /home/ubuntu/.env) && pm2 start npm -- start
