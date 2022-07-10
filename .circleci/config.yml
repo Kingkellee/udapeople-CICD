@@ -350,7 +350,7 @@ jobs:
             if curl -s ${URL} | grep "Welcome"
             then
               # Change this to 0 after the job fails
-              echo "SUCCESS, Backend Deployed!!"
+              echo "SUCCESS, Frontend Deployed!!"
               return 1
             else
               echo "FAILED, Something went Wrong!!"
