@@ -323,13 +323,19 @@ jobs:
             --output text)
               export API_URL="http://${BACKEND_IP}:3030"
               echo "${API_URL}"
-            if curl "${API_URL}/api/status" | grep "ok"
+            # if curl "${API_URL}/api/status" | grep "ok"
+            # then
+            #   echo "SUCCESS, Backend Deployed!!"
+            #   return 0
+            # else
+            #   echo "FAILED, Something went Wrong!!"
+            #   return 1
+            # fi
+            if curl -s $API_URL/api/status | grep "ok"
             then
-              echo "SUCCESS, Backend Deployed!!"
-              return 0
+              exit 0
             else
-              echo "FAILED, Something went Wrong!!"
-              return 1
+              exit 1
             fi
       - run:
           name: Frontend Smoke Test
