@@ -32,7 +32,7 @@
 - name: start app
   become: yes
   shell: |
-    npm install
+    npm run migrations
     pm2 stop default
     export $(grep TYPEORM_HOST /home/ubuntu/.env)
     pm2 start npm -- start
