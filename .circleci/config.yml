@@ -334,7 +334,7 @@ jobs:
             --output text)
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
-            if curl -s "${API_URL}/api/status" | grep "ok"
+            if curl "${API_URL}/api/status" | grep "ok"
             then
               echo "SUCCESS, Backend Deployed!!"
               return 0
@@ -351,7 +351,7 @@ jobs:
             then
               # Change this to 0 after the job fails
               echo "SUCCESS, Frontend Deployed!!"
-              return 1
+              return 0
             else
               echo "FAILED, Something went Wrong!!"
               return 1
