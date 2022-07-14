@@ -374,7 +374,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/cloudfront.yml \
-              --stack-name TestStack \
+              --stack-name InitialStack \
               --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID:0:7}" \
               --tags project=udapeople
       - destroy-environment
@@ -403,7 +403,6 @@ jobs:
       - run:
           name: Remove OldStack/S3 Bucket
           command: |
-            echo "OldWorkflowID = ${OldWorkflowID}"
             if "${STACKS[@]}" != "${OldWorkflowID}"
             then
               aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkflowID}"
