@@ -179,7 +179,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ['40:6d:2a:db:a4:6d:bf:f3:b9:f3:21:95:5d:85:76:86']
+          fingerprints: ['68:12:a7:0e:e5:7b:2a:8e:1e:97:4a:17:ad:bd:c5:11']
       - run:
           name: install required dependencies
           command: |
@@ -289,7 +289,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ['40:6d:2a:db:a4:6d:bf:f3:b9:f3:21:95:5d:85:76:86']
+          fingerprints: ['68:12:a7:0e:e5:7b:2a:8e:1e:97:4a:17:ad:bd:c5:11']
       - attach_workspace:
           at: ~/
       - run:
@@ -354,11 +354,11 @@ jobs:
             echo "${API_URL}"
             if curl -s "${API_URL}/api/status" | grep "ok"
             then
-              echo "SUCCESS, Backend Deployed!!"
-              return 0
+                echo "SUCCESS, Backend Deployed!!"
+                exit 0
             else
-              echo "FAILED, Something went Wrong!!"
-              return 1
+                echo "FAILED, Something went Wrong!!"
+                exit 1
             fi
       - destroy-environment
       - revert-migrations
