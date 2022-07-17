@@ -337,7 +337,7 @@ jobs:
             if curl -s ${URL} | grep "Welcome"
             then
               # Change this to 0 after the job fails
-              echo "SUCCESS, Frontend Deployed!!"
+              echo "FAILED, Something went Wrong!!"
               return 1
             else
               echo "FAILED, Something went Wrong!!"
@@ -360,8 +360,8 @@ jobs:
               echo "FAILED, Something went Wrong!!"
               return 1
             fi
-      # - destroy-environment
-      # - revert-migrations
+      - destroy-environment
+      - revert-migrations
 
   cloudfront-update:
     docker:
