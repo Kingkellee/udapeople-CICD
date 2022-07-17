@@ -259,7 +259,7 @@ jobs:
             --output text)
             export API_URL="http://${BACKEND_IP}:3030"
             echo "API_URL = ${API_URL}"
-            echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
+            echo "API_URL=http://${BACKEND_IP}:3030" >> frontend/.env
             cat frontend/.env
       - run:
           name: Deploy Frontend Object
@@ -294,9 +294,7 @@ jobs:
             npm run build
             cd ..
             tar -C backend -czvf artifact.tar.gz .
-            mkdir -p ~/project/.circleci/ansible/roles/deploy/files/
-            cp artifact.tar.gz .circleci/ansible/roles/deploy/files/
-            cp ~/project/backend/.env .circleci/ansible/roles/deploy/files/backend.env
+            cp ./artifact.tar.gz .circleci/ansible/roles/deploy/files/
       - run:
           name: Deploy Backend
           command: |
