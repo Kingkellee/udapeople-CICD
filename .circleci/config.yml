@@ -370,7 +370,7 @@ jobs:
               list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
               --no-paginate --output text) 
 
-            echo "Old Wokflow ID: $OLD_WORKFLOW_ID"          
+            echo "Old Wokflow ID: $OldWorkflowID"          
             curl --insecure https://kvdb.io/${KVDB_BUCKET_ID}/OldWorkflowID -d "${OldWorkflowID}"
             aws cloudformation deploy \
               --template-file .circleci/files/cloudfront.yml \
@@ -395,12 +395,9 @@ jobs:
           command: |
             export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
               --stack-status-filter CREATE_COMPLETE --no-paginate --output text))
-
             echo "stack names: ${STACKS[@]}""
-
-            export oldworkflowid=$(curl --insecure https://kvdb.io/${KVDB_BUCKET_ID}/OldWorkflowID)
-            echo "old workflow ID: $oldworkflowid"
-
+            export OldWorkflowID=$(curl --insecure https://kvdb.io/${KVDB_BUCKET}/old_workflow_id)
+            echo Old Workflow ID: $OldWorkflowID 
             if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
             then
               echo ------------ Removed Old Stacks --------------
