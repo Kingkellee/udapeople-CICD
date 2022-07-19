@@ -1,7 +1,8 @@
 # URLS
 
 URL01 (Git Repo): `https://github.com/Kingkellee/udapeople-CICD`
-URL02 (S3 Bucket): `http://udapeople-bfb8ce5.s3-website-us-east-1.amazonaws.com`
+URL02 (S3 Bucket): `http://udapeople-bc2bf43.s3-website-us-east-1.amazonaws.com`
+URL03 (CloudFront Frontend URL): `http://d234expulma3mm.cloudfront.net`
 
 # SCREENSHOT
 
@@ -32,3 +33,5 @@ URL02 (S3 Bucket): `http://udapeople-bfb8ce5.s3-website-us-east-1.amazonaws.com`
 - [ SCREENSHOT of fixed compile errors](screenshot/Fixed-Compile-Error-Frontend.png): Provide a screenshot of Fixed Compile Error FrontEnd.
 - [ SCREENSHOT of all of your Backend unit tests passing](screenshot/Unit-Test-Backend.png): Provide a screenshot of all Backend Unit Test Passing
 - [ SCREENSHOT of all of your Frontend unit tests passing](screenshot/Unit-Test-Frontend.png): Provide a screenshot of all Frontend Unit Test Passing
+
+- [VIDEO_EVIDENCE_OF_WORKING_FRONTEND](screenshot/Evidence-of-deployed-and functioning-front-end-application-in-an-S3-bucket.mp4):URL_03 Screenshot
