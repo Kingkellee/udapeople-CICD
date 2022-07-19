@@ -27,7 +27,8 @@ Submited the following as completion for the Project
 
 - [ My Project Submission Check List](rubrics.md)
 - [ Project Presentation](presentation.pdf)
-- [ Urls Text File ](url.md)
+- [ Urls Text File ](urls.txt)
+- [ Urls Text File ](urls.md)
 
 ### Built With
 
